@@ -1,0 +1,48 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+		link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+		title Course Project
+		link(rel="stylesheet", type="text/css", href="css/style.css")
+		script(src='/js/globalFunctions.js')
+	body
+		ul#title-contact-management
+			li.column-contact-management Contact Management
+			li.column-contact-management
+				a(href="index")
+					button.btheader
+						i.material-icons.btindex format_list_bulleted
+						|  Index
+			li.column-contact-management
+				a(href="contact")
+					button.btheader
+						i.fa.fa-plus-square
+						|  New
+		#body-class
+			br
+			#title-form Contact Detail
+			#body-form
+				.line-form
+					label(for="name") Name: 
+						span(class="detail-description" name="name") #{name}
+				.line-form
+					label(for="email") E-mail: 
+						span(class="detail-description" name="email") #{email}
+				.line-form
+					label(for="phone") Phone: 
+						span(class="detail-description" name="phone") #{phone}
+				#footer-form
+					form(action="/contact", method="post")
+						input.input-form(type="hidden", name="hash", value=hash)
+						input.input-form(type="hidden", name="name", value=name)
+						input.input-form(type="hidden", name="email", value=email)
+						input.input-form(type="hidden", name="phone", value=phone)
+						input.input-form(type="hidden", name="actionUser")
+						input.submit-button(type="button", value="Edit", onclick="editContact('edit','contact')")
+						input.submit-button(type="button", value="Delete", onclick="editContact('delete','delete')")
+						

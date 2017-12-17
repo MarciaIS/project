@@ -1,0 +1,20 @@
+{
+  "name": "course_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon app.js -e js,pug",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-validator": "^4.3.0",
+    "line-reader": "^0.4.0",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {},
+  "description": ""
+}

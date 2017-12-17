@@ -1,0 +1,56 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+		link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+		title Course Project
+		link(rel="stylesheet", type="text/css", href="css/style.css")
+		script(src='/js/globalFunctions.js')
+	body
+		ul#title-contact-management
+			li.column-contact-management Contact Management
+			li.column-contact-management
+				button.btheader.disabled
+					i.material-icons.btindex format_list_bulleted
+					|  Index
+			li.column-contact-management
+				a(href="contact")
+					button.btheader
+						i.fa.fa-plus-square
+						|  New
+		#body-class
+			h2 Contact List
+			ul.title-contact-list
+				li.column-contact-list-first #
+				li.column-contact-list-variable Name
+				li.column-contact-list-variable E-mail
+				li.column-contact-list-fixed Phone
+				li.column-contact-list-fixed  
+				li.column-contact-list-fixed  
+				li.column-contact-list-fixed  
+			mixin contact-info(contact)
+				ul.contact-list
+					li.column-contact-list-first #{contact.hash}
+					li.column-contact-list-variable #{contact.name}
+					li.column-contact-list-variable #{contact.email}
+					li.column-contact-list-fixed #{contact.phone}
+					li.column-contact-list-fixed
+						input.submit-button(type="button", value="Details", onclick="editContact('details','detail','"+contact.hash+"','"+contact.name+"','"+contact.email+"','"+contact.phone+"')")
+					li.column-contact-list-fixed
+						input.submit-button(type="button", value="Edit", onclick="editContact('edit','contact','"+contact.hash+"','"+contact.name+"','"+contact.email+"','"+contact.phone+"')")
+					li.column-contact-list-fixed
+						input.submit-button(type="button", value="Delete", onclick="editContact('delete','delete','"+contact.hash+"','"+contact.name+"','"+contact.email+"','"+contact.phone+"')")
+			for contact in contactList
+				+contact-info(contact)
+			form(action="/contact", method="post")
+				input.input-form(type="hidden", name="hash", value=hash)
+				input.input-form(type="hidden", name="name", value=name)
+				input.input-form(type="hidden", name="email", value=email)
+				input.input-form(type="hidden", name="phone", value=phone)
+				input.input-form(type="hidden", name="actionUser")
+	
+

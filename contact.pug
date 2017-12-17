@@ -1,0 +1,50 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+		link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+		title Course Project
+		link(rel="stylesheet", type="text/css", href="css/style.css")
+	body
+		ul#title-contact-management
+			li.column-contact-management Contact Management
+			li.column-contact-management
+				a(href="index")
+					button.btheader
+						i.material-icons.btindex format_list_bulleted
+						|  Index
+			li.column-contact-management
+				button.disabled.btheader
+					i.fa.fa-plus-square
+					|  New
+		#body-class
+			br
+			if actionUser == 'edit'
+				#title-form Edit Contact
+			else
+				#title-form New Contact
+			#body-form
+				form(action="/create-contact", method="post")
+					input#hash(type="hidden", name="hash", value=hash)
+					div(class="error-message-class") #{contactExists}
+					.line-form
+						div(class="error-message-class") #{emptyName} #{nameAlpha}
+						label(for="name") Name:
+						br
+						input#name.input-form(type="text", name="name", value=name)
+					.line-form
+						div(class="error-message-class") #{emptyEmail} #{emailInvalid}
+						label(for="email") E-mail:
+						br
+						input#email.input-form(type="email", name="email", value=email)
+					.line-form
+						div(class="error-message-class") #{emptyPhone} #{phoneValid}
+						label(for="phone") Phone:
+						br
+						input#phone.input-form(type="text", name="phone", value=phone)
+					#footer-form
+						input.submit-button(type="submit")
